@@ -1,0 +1,93 @@
+html,
+body {
+  margin: 0;
+  height: 100vh;
+  font-size: 1.1em;
+}
+
+body {
+  display: grid;
+  grid-template-areas: "app"
+                       "footer";
+  grid-template-rows: 10fr minmax(5rem, 1fr);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+#app {
+  grid-area: app;
+
+  nav {
+    // sticky header:
+    display: flex;
+    position: sticky;
+    top: 0;
+    // no transparent background
+    color: black;
+    background: white;
+    // make visually like a header
+    border-bottom: 1px solid lightgrey;
+    justify-content: center;
+    height: 5rem;
+    margin: 0;
+
+    h1 {
+      padding: 0 1rem;
+      margin: 1.65rem 0;
+    }
+
+    input {
+      display: inline-block;
+      font-size: 1.6rem;
+      margin: 1.4rem 0;
+    }
+  }
+
+  #container {
+    grid-area: container;
+
+    padding: 1rem;
+
+    p {
+      text-align: center;
+      margin: 0;
+    }
+  }
+}
+
+footer {
+  // grid footer:
+  grid-area: footer;
+
+  // colors
+  color: rgba(0, 0, 0, 0.58);
+  background: lightgrey;
+
+  // center everything:
+  display: flex;
+  span {
+    margin: auto;
+    // fix visited link color:
+    a {
+      color: royalblue;
+    }
+  }
+}
+
+// making app more responsive, more mobile friendly...
+@media (max-width: 580px) {
+  #app {
+    nav {
+      align-items: center;
+    }
+
+    // hide h1 app brand:
+    h1 {
+      display: none;
+    }
+
+    input {
+      text-align: center;
+      min-width: 90%;
+    }
+  }
+}

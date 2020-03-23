@@ -1,0 +1,34 @@
+language: node_js
+node_js: lts/*
+env:
+  global:
+    secure: U0upEY4PwZoGK4Lahdgw15X69/3oxfHwZlhvToJfj27IRs3JfLkIC4VIvKaHm8miGrbG+Dcw/HjlLMglbTs2GKv5MVoziu4tfI27FBRFm7OPtL1eyVk7U4pmLNhsXjeP0QEccHWo31IMpixio3XTM8uPCz8qXDBVLY/HLDm+pwa9/z6VX4ha++nzbvahlHg5WoJ02dOHyMAzEn+q/X0cfMSGi/ldV9qVx00VuaptYULxZOY0tiBvbLoO+JcdkjF9+lf++PaB5zATEeb4Lhl0VYSx9xwMLWwboB0YnSXKCPKKjF6RZ/SOUlweuRpCRZszUwETDCgE28E2FuuqmYn6Y+ZFWwcv8L9pc19nZ47kBueLmIXohZCyWSqbozSq6KwJ/HnbsRSgCuIkO3SEJhYtC12tPch9vos+/vwlDTUV5XNfDxjtKYQh+AKWldZzIYH2sPxLPsmvnBw+qHATF+TR83ZX5ilZ5gQ5WgKfVib36TduOhKVVvUxg1vmg/C8GrRJaXEqC2iRjd+gQQIAupcn5jc71vtxwRhqjUh/tXJy4HrUP789TaG1kXfVzhLdGSsVbQR2PrDz5aoqXFSmYC+1T3vfLoufsYZuJ5MmEI6u3TAbe2sNAho4HAtvPRvtgMRSAuixLW29SX6eWxAn7F0RQK+ck5mUzuKOQ9YCwmvzuco=
+notifications:
+  email: false
+git:
+  quiet: true
+  depth: false
+jobs:
+  include:
+    - stage: deploy
+      name: gh-pages
+      script: skip
+      before_deploy:
+        - cd $TRAVIS_BUILD_DIR && npm i
+        - cd $TRAVIS_BUILD_DIR && npm audit fix
+        - cd $TRAVIS_BUILD_DIR && npm run gh
+      deploy: &pages
+        provider: pages
+        on:
+          branch: master
+        skip-cleanup: true
+        keep-history: true
+        target_branch: gh-pages
+        github-token: "$GITHUB_TOKEN"
+        local-dir: $TRAVIS_BUILD_DIR/dist
+cache:
+  npm: true
+  directories:
+    - ~/.n
+    - ./node_nodules
+    - $TRAVIS_BUILD_DIR/node_nodules
