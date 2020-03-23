@@ -1,0 +1,60 @@
+{
+  "scripts": {
+    "clean": "rimraf -rf .cache dist",
+    "dev": "parcel src/index.html --no-cache",
+    "prebuild": "npm run clean",
+    "build": "parcel build src/index.html --no-cache",
+    "start": "pm2 start 'npm run dev' --name app",
+    "restart": "pm2 restart app",
+    "stop": "pm2 kill",
+    "logs": "pm2 logs"
+  },
+  "name": "react-hooks-typescript-app",
+  "version": "1.0.0",
+  "main": "./src/app.js",
+  "keywords": [
+    "ts",
+    "pm2",
+    "react",
+    "parcel",
+    "typescript",
+    "parcel-bundler"
+  ],
+  "author": "Maksim Kostromin <daggerok@gmail.com> (https://github.com/daggerok)",
+  "license": "MIT",
+  "description": "React Hooks TypeScript App",
+  "devDependencies": {
+    "@babel/preset-typescript": "7.9.0",
+    "@types/node": "13.9.2",
+    "@types/react": "16.9.25",
+    "@types/react-dom": "16.9.5",
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "parcel-bundler": "1.12.4",
+    "parcel-plugin-html-externals": "0.2.0",
+    "parcel-plugin-static-files-copy": "2.3.1",
+    "pm2": "4.2.3",
+    "sass": "1.26.3",
+    "typescript": "3.8.3"
+  },
+  "dependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "externals": {
+    "/ignore/this": false
+  },
+  "staticFiles": {
+    "staticPath": "./src/public",
+    "watcherGlob": "**"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-0"
+    ]
+  }
+}
