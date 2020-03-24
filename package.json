@@ -6,7 +6,7 @@
     "prebuild": "npm run clean",
     "build": "parcel build src/index.html --no-cache",
     "postgh": "ncp ./dist/index.html ./dist/404.html",
-    "gh": "npm run build -- --public-url='/react-hooks-typescript-app/'",
+    "gh": "cross-env NODE_ENV=gh npm run build -- --public-url='/react-hooks-typescript-app/'",
     "deploy": "gh-pages -e ./ -d ./dist -s '{*.*,.*,*,**}' --branch gh-pages --dotfiles=true -m \"Github Pages $(date +%Y-%m-%d) deployment\"",
     "start": "pm2 start 'npm run dev' --name app",
     "restart": "pm2 restart app",
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@reach/router": "1.3.3",
+    "cross-env": "^7.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },

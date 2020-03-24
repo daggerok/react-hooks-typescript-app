@@ -3,6 +3,9 @@ Because we love functional programming!
 
 TypeScript status: IN PROGRESS
 
+## resources
+* [parcel .env](https://parceljs.org/env.html)
+
 ## other repositories
 * [GitHub: daggerok/parcel-examples](https://github.com/daggerok/parcel-examples)
 * [GitHub: daggerok/css-examples](https://github.com/daggerok/css-examples)
