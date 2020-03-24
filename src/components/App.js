@@ -1,10 +1,14 @@
 import React, { Fragment } from 'react';
 import { Nav } from './app/Nav';
-import { Container } from './app/Container';
+import { Link } from '@reach/router';
 
-export const App = () => (
+export const App = (props) => (
   <Fragment>
     <Nav/>
-    <Container/>
+    <div id='links'>
+      <Link to='/'>&lt;- Home</Link>
+      <Link to={'/about'}>About -&gt;</Link>
+    </div>
+    {props.children}
   </Fragment>
 );

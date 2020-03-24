@@ -42,6 +42,11 @@ body {
     }
   }
 
+  #links {
+    display: flex;
+    justify-content: space-around;
+  }
+
   #container {
     grid-area: container;
 
@@ -50,6 +55,12 @@ body {
     p {
       text-align: center;
       margin: 0;
+    }
+  }
+
+  .about {
+    h2 {
+      text-align: center;
     }
   }
 }
